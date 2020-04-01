@@ -1,13 +1,18 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import Listing
+
 
 # Create your views here.
 
 def index(request):
-    return render(request, 'listings/listings.html')
+    listings = Listing.objects.all()
+
+    context = { 
+        'listings' : listings
+    }
 
 def listings(request):
     return render(request, 'listings/listing.html')
 
-def seacrh(request):
+def search(request):
     return render(request, 'listings/search.html')
